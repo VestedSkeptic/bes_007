@@ -1,0 +1,36 @@
+{% load ft_formTags %}
+{% include "ft_head.html" %}
+
+{% ft_formclass         "mmh-formTopLabel mmh-formFieldSetsConnect" %}              {# classnames #}
+    {% comment %}
+{% ft_formclass         "mmh-formTopLabel" %}                                       {# classnames #}
+{% ft_formclass         "mmh-formLeftLabel" %}                                      {# classnames #}
+{% ft_formclass         "mmh-formTopLabel mmh-formFieldSetsConnect" %}              {# classnames #}
+{% ft_formclass         "mmh-formLeftLabel mmh-formFieldSetsConnect" %}             {# classnames #}
+    {% endcomment %}
+
+{% ft_errorbanner       form_non_field_errors form_field_errors %}                  {# always those two parameters #}
+
+{% ft_fieldset_start    "Personal Information" %}                                   {# legend, opt_classname #} 
+{% ft_instructions      request '' %}                                               {# request opt_bbcodetext #}                                                                                     
+{% ft_field             form.firstName         request %}                           {# field, request #} 
+{% ft_field             form.lastName          request %}                           {# field, request #}
+{% ft_field             form.email             request %}                           {# field, request #}
+{% ft_fieldset_end      %}                                                          {# none #}    
+
+{% ft_fieldset_start    "Site Information" %}                                       {# legend, opt_classname #}
+{% ft_field             form.userName          request %}                           {# field, request #}  
+{% ft_field             form.pass1             request %}                           {# field, request #}  
+{% ft_field             form.pass2             request %}                           {# field, request #}  
+{% ft_field             form.reasonJoined      request %}                           {# field, request #}  
+{% ft_fieldset_end      %}                                                          {# none #} 
+
+{% ft_fieldset_start    "Prove you're not an automated spam robot" %}               {# legend, opt_classname #}
+<li>{% include "BLOCK_recaptcha.html" %}</li>
+{% ft_fieldset_end      %}                                                          {# none #}
+
+{% ft_fieldset_start    "" "submit"             %}                                  {# legend, opt_classname #}
+{% ft_button            "submit" "submit" "Submit" %}                               {# classname, typename, value #} 
+{% ft_fieldset_end      %}                                                          {# none #} 
+
+{% include "ft_foot.html" %}

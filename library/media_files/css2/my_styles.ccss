@@ -1,0 +1,458 @@
+// ----------------------------------------------------------
+// http://sandbox.pocoo.org/clevercss/
+// 1 em = 10 pixels, USE THIS
+
+// ----------------------------------------------------------
+body_background_color		= #fff 
+
+full_column_width			= 958px   // total of the following values should equal this
+main_column_width			= 703px
+main_horizontal_padding		=  10px
+main_right_margin 			=  11px
+side_column_width			= 244px
+side_horizontal_padding		=   4px
+
+dark_0  		            = #000000
+dark_1				        = #0f0f0f
+dark_2					    = #1e1e1e 	
+dark_3				        = #2d2d2d 	
+dark_4				        = #3c3c3c 	
+dark_5				        = #4b4b4b 	
+dark_6  					= #5a5a5a
+dark_7				        = #696969 	
+dark_8				        = #787878 	
+lite_8				        = #878787 	
+lite_7      		        = #969696 	
+lite_6				        = #a5a5a5 	
+lite_5				        = #b4b4b4 	
+lite_4				        = #c3c3c3 	
+lite_3				        = #d2d2d2 	
+lite_2    			        = #e1e1e1
+lite_1  			        = #f0f0f0 	
+lite_0  			        = #ffffff 	
+
+main_item_background		= #fff
+side_item_background		= #fff
+
+citizen_blue                = #008B8B
+
+item_vertical_margin		= 0.6em
+
+fnt_large					= 1.2em
+fnt_medium					= 1.1em
+fnt_normal					= 1.0em
+fnt_small					= 0.9em
+fnt_tiny					= 0.8em
+
+
+// ----------------------------------------------------------
+html:
+    font-size              : 70%;
+    line-height            : 1.5em;
+                          
+body:
+	margin                 : 0;
+	background-color       : $body_background_color;
+	color                  : #333;
+
+// ----------------------------------------------------------
+.bes-full-column:											// equal to span-19 (958px)
+	width				: $full_column_width;			
+	float				: left;
+
+// ----------------------------------------------------------
+.bes-main-column:											// equal to span-14 (703px)
+	float				: left;
+	width				: $main_column_width;						 
+	margin-right		: $main_right_margin;
+
+// ----------------------------------------------------------
+.bes-side-column:											// equal to span-5 (244px)
+	float				: left;
+	width				: $side_column_width;			 
+
+// ----------------------------------------------------------
+.bes-align-left:										
+	text-align			: left;
+	
+// ----------------------------------------------------------
+.bes-align-center:										
+	text-align			: center;
+
+// ----------------------------------------------------------
+.bes-align-right:										
+	text-align			: right;
+       
+// ----------------------------------------------------------
+.bes-item:
+    margin-top          : $item_vertical_margin;
+    margin-bottom       : $item_vertical_margin;
+    position			: relative;								
+    background          : $main_item_background;
+    padding-top         : 4px;
+    padding-bottom      : 24px;
+    padding-left        : $main_horizontal_padding / 2;
+    padding-right       : $main_horizontal_padding / 2;
+    color           	: $dark_1;
+    border 			    : 1px solid $dark_1;
+    a:
+		color           	: $dark_2;
+		text-decoration    	: none;
+		&:hover:
+			color           	: $dark_1;
+			text-decoration    	: underline;
+    .ps-title:
+        position        : relative;
+    .ps-title-pre:
+        position        : relative;
+    .ps-title-post:
+        position        : relative;
+        a:
+			text-decoration    	: underline;
+    .ps-subtitle:
+		position        : relative;
+		left            : 1.5em;
+		top             : 0.1em;		
+		color           : $dark_6;	
+		width			: $main_column_width-34;
+		a:
+			color           : $dark_6;	
+    .ps-admin:
+		text-transform  : lowercase;
+		position        : absolute;
+		float			: right;
+		right           : 0.7em;
+		top             : 0.3em;
+		a:
+			text-decoration    	: underline;
+    .ps-body:
+        color          	: $dark_2;
+        position        : relative;
+        width           : 100%;
+        a:
+            color           	: $dark_7;
+        .ps-body-definition:
+            a: 
+                color   : $citizen_blue;
+    .ps-subbody:
+		position        : relative;
+		top             : 1.4em;	
+		color           : $dark_6;	
+		width			: $main_column_width-34;
+		a:
+			color           : $dark_6;	
+    .ps-footer:
+		//text-transform  : lowercase;
+		color          	: $dark_2;
+		position        : relative;
+		left            : 1.8em;
+		top             : 1.4em;	
+		width			: 96%;
+		align           : right;            
+
+// ----------------------------------------------------------
+.bes-side-item-container:
+    margin-top          : $item_vertical_margin;
+    margin-bottom       : $item_vertical_margin;
+    background         	: $side_item_background;
+    padding-top         : 4px;	
+    padding-bottom      : 4px;
+    padding-left        : $side_horizontal_padding / 2;
+    padding-right       : $side_horizontal_padding / 2;
+    color               : $dark_1;
+    border 			    : 1px solid $dark_1;
+    position			: relative;
+    a:
+		color           	: $dark_3;
+		&:hover:
+			color           	: $dark_2;			
+    .ps-title:
+    	color          	    : $dark_1;
+        text-transform      : uppercase;
+    .ps-subtitle:
+		text-transform  : lowercase;		
+    .ps-body:
+		color          	: $dark_2;
+    .ps-tag:
+		color          	: $dark_2;			
+
+// ----------------------------------------------------------
+.bes-navMenu:
+    padding-top         : 4px;
+    padding-bottom      : 4px;
+    font-size           : 1.0em;
+    text-transform      : lowercase;
+    background			: $dark_6;
+    color           	: $lite_5;
+    a:
+        font-weight         : bold;
+        padding-left        : 6px;	
+        padding-right       : 6px;
+        color               : $lite_3;
+        font-size           : 0.8em;
+        text-decoration    	: none;
+        &:hover, focus:
+            text-decoration    : underline;
+            color              : $lite_1;
+        &:active:
+            color              : $lite_1;					
+        &.on, &.on:hover, &.on:focus, &.on:active:
+            color               : $lite_1;
+            font-size           : 1.0em;
+
+// ----------------------------------------------------------
+.box-1: 
+	background			: #d2d2d2;
+	
+.box-2:
+	background			: #c3c3c3;
+	
+.box-3:
+	background			: #b4b4b4;
+	
+.box-4:
+	background			: #a5a5a5;	
+
+.mmh-warning:
+	background          : crimson;
+
+.mmh-odd-item:
+	background          : #ddd;
+
+.mmh-even-item:
+	background          : #fff;
+
+.mmh-noScrollBars:
+	overflow            : hidden;
+
+.mmh-inline:
+	display         	: inline;
+
+.mmh-display-none:
+	display         	: none;
+
+li:
+	margin				: 0 0 0 2em;	
+
+// ----------------------------------------------------------
+.mmh-formTopLabel, .mmh-sidebarformTopLabel:
+	fieldset li: 
+		padding-bottom      : 1em;
+		list-style          : none;
+	label: 
+		display             : block;
+		em:             													// required symbol  
+			color               : #060; 
+			font-size           : 85%; 
+			font-style          : normal; 
+			text-transform      : uppercase;
+		strong:     														// error display   
+			display             : block; 
+			color               : red; 
+			font-size           : 85%; 
+			font-style          : normal; 
+			text-transform      : uppercase;
+		small:       														// help text   
+			display             : block; 
+			font-size           : 85%; 
+			font-style          : italic; 
+
+// ----------------------------------------------------------
+.mmh-formLeftLabel:
+	fieldset li: 
+		float               : left; 
+		clear               : left; 
+		width               : 100%; 
+		padding-bottom      : 1em;
+		list-style          : none;
+	label: 
+		position            : relative; 
+		float               : left; 
+		width               : 10em; 
+		margin-right        : 1em;
+		em:               													// required symbol 
+			position            : absolute; 
+			left                : 10em; 
+			top                 : 0;
+		strong:            													// error display  
+			display             : block; 
+			color               : red; 
+			font-size           : 85%; 
+			font-style          : normal; 
+			text-transform      : uppercase;
+		small:            													// help text  
+			display             : block; 
+			font-size           : 85%; 
+			font-style          : italic; 
+
+// ----------------------------------------------------------
+.mmh-formFieldSetsConnect fieldset: 
+	margin              : 0 0 -1em 0; 
+	padding             : 0 0 1em 0; 
+
+// ----------------------------------------------------------
+fieldset: 
+	float               : left; 
+	clear               : both; 
+	width               : 95%; 
+	margin              : 0 0 1.5em 0; 
+	padding             : 0; 
+	border              : 1px solid #aba0a9;        
+	background-color    : #e1ded8;              
+	ol: 
+		padding             : 0,5em 1em 0 1em; 
+		list-style          : none;
+
+.mmh-sidebarformTopLabel:
+	fieldset:
+		select: 
+			width               : 90%; 
+		textarea: 
+			width               : 90%; 
+		input: 
+			width               : 90%; 
+
+legend: 
+	margin-left         : 1em; 
+	color               : #000000; 
+	font-weight         : bold;
+
+.formError: 
+	color               : black; 
+	background-color    : salmon;
+	font-weight         : bold;
+	.errorlist li: 
+		list-style          : disc;
+
+input:
+	textarea : 
+		width               : 60%; 
+	.submit: 
+		width               : auto;	
+		
+
+// ----------------------------------------------------------
+.arrow:
+    margin				: 2px 0px 0px 0px;
+    width				: 100%;
+    height				: 14px;
+    display				: block;
+    cursor				: pointer;
+    background-position	: center center;
+    background-repeat	: no-repeat;
+
+    &.upmod:
+        background-image : url(/lib_media_007/images/aupmod.gif); 
+        
+    &.downmod:
+        background-image: url(/lib_media_007/images/adownmod.gif); 
+        
+    &.up:
+        background-image: url(/lib_media_007/images/aupgray.gif); 
+        
+    &.down:
+        background-image: url(/lib_media_007/images/adowngray.gif); 	
+
+        
+// ----------------------------------------------------------
+.bes-thread-item:
+    line-height         : 1.1em;		
+    background          : $main_item_background;
+    //width               : 25%;
+    width               : auto;
+    padding-top         : 4px;
+    padding-bottom      : 4px;
+    text-align          : left;
+    color               : $dark_0;
+    margin				: 0px 0px 13px 00px;    // bottom margin
+    //border              : 1px solid $dark_1;
+    //padding-left        : $main_horizontal_padding / 2;
+    //padding-right       : $main_horizontal_padding / 2; 
+        
+// ----------------------------------------------------------
+.mmh-form-threadEntry:
+	margin				: 13px 0px 0px 0px;
+	font-size           : $fnt_medium;
+	textarea: 
+		border				: 1px solid;
+	.buttons: 
+		margin				: 0px; 
+		float				: left; 
+		button: 
+			margin				: 5px; 
+			
+// ----------------------------------------------------------
+.mmh-replyCitizen:
+	color              : $citizen_blue;
+	font-size          : $fnt_small;
+	padding-top        : 2px;	
+	.notRead:
+		color              : red;
+
+// ----------------------------------------------------------
+.mmh-replyData:
+	color              : $dark_6;
+	font-size          : $fnt_small;
+	padding-top        : 2px;	
+	.notRead:
+		color              : red;
+
+// ----------------------------------------------------------
+.mmh-replyBody:
+	font-size          : $fnt_normal;
+	a:
+		text-decoration    : none;
+		&:hover:
+			text-decoration    : underline;
+
+// ----------------------------------------------------------
+.mmh-replySpacer:
+    padding-bottom     : 0px;
+    line-height        : 0.1em;		
+
+// ----------------------------------------------------------
+.mmh-replyActions:
+	font-size          : $fnt_tiny;
+	a:
+		color              : $dark_6;
+		text-decoration    : none;
+		&:hover:
+			text-decoration    : underline;
+
+// ----------------------------------------------------------
+.mmh-replyErrorText:
+    color              	: red;
+    a:
+        color : red;
+
+// ----------------------------------------------------------
+.mmh-replyKey-01: 
+    display				: inline;
+
+// ----------------------------------------------------------
+.mmh-replyKey-01.inactive: 
+	display	           	: none; 
+	
+// ******************************** mmh-main-container                           
+.mmh-main-container:
+    background          : gold;
+    padding-left        : $main_horizontal_padding / 2;
+    padding-right       : $main_horizontal_padding / 2;    
+    padding-top         : 2;
+    padding-bottom      : 2;    
+.col-left:
+    width           : 50
+    float:          : left
+.col-right:
+    width           : 50
+    float:          : right
+
+// ----------------------------------------------------------
+.mmh-width_percent_95:
+     width          : 95%
+
+
+
+
+
+			

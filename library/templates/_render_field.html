@@ -1,0 +1,21 @@
+<div class="span-2 clear">
+    <label for="{{ field.auto_id }}">{{ field.label }}</label>
+</div>
+  
+<div class="span-2">
+    {% if field.field.required %}&nbsp;(required){% else %}&nbsp;{% endif %}
+</div>  
+
+<div class="span-10 last">
+    {{ fieldString|safe }}
+    {% if field.errors %}
+    {{field.errors}}
+    {% endif %}
+</div>  
+
+{% if field.help_text %}
+    <div class="span-14 last">
+        {{field.help_text}}
+    </div>  
+{% endif %}
+

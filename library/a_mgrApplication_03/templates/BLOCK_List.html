@@ -1,0 +1,13 @@
+{% if objectList %}
+{% for object in objectList %}
+
+{% ifchanged object.1 %}
+<div class="mmh-titleBar span-14">{% ifequal object.1 "unsubscribe" %}Applications Subscribed To{% else %}Applications Not Subscribed To{% endifequal %}</div>
+{% endifchanged %}
+
+{% include "a_mgrApplication_03/templates/BLOCK_Detail.html" %}
+{% if not forloop.last %}<div class='span-14 mmh-list-spacer last'>&nbsp;</div>{% endif %}
+
+{% endfor %}
+{% include "B_paginationLinks.html" %}
+{% endif %}

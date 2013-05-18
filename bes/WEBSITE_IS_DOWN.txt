@@ -1,0 +1,10 @@
+<b>besomeone.ca is currently offline</b><br>
+<br>A code update is being performed.
+<br>
+<br>Everything should be back to normal at 12:15 pm EST, Saturday May 16, 2009.
+
+
+{% comment %}
+<br>A server upgrade is being performed.
+<br>A code update is being performed.
+{% endcomment %}

@@ -1,0 +1,11 @@
+{% load ft_formTags %}
+{% include "ft_head.html" %}
+{% ft_formclass         "mmh-formLeftLabel" %}  
+
+{% ft_fieldset_start    "Validate Account" %}                                       {# legend, opt_classname #} 
+{% ft_field             form.authSelect         request %}                          {# field, request #} 
+{% ft_field             form.reasonfordeny      request %}                          {# field, request #} 
+{% ft_button            "submit" "submit" "Submit" %}                               {# classname, typename, value #}                                                                                      
+{% ft_fieldset_end      %}
+
+{% include "ft_foot.html" %}

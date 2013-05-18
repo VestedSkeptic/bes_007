@@ -1,0 +1,14 @@
+{% load ft_formTags %}
+{% include "ft_head.html" %}
+
+{% ft_formclass         "mmh-formLeftLabel" %}                                      {# classnames #}
+{% ft_errorbanner       form_non_field_errors form_field_errors %}                  {# always those two parameters #}
+
+{% ft_fieldset_start    "Add Key Value Pair" %}                                    {# legend, opt_classname #} 
+{% ft_field             form.date            request %}                             {# field, request #} 
+{% ft_field             form.laps            request %}                             {# field, request #} 
+{% ft_field             form.comment            request %}                             {# field, request #} 
+{% ft_button            "submit" "submit" "add" %}                               {# classname, typename, value #} 
+{% ft_fieldset_end      %}                                                          {# none #} 
+
+{% include "ft_foot.html" %}

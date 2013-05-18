@@ -1,0 +1,31 @@
+{# bes_main_item_no_lcol.html #}
+<div class="bes-main-item-no-lcol">
+    <div class="ps-title">
+        <h1>
+        {% block ps-title %}
+        {% endblock ps-title %}
+        </h1>
+        
+        <div class="ps-subtitle">
+            {% block ps-subtitle %}
+            {% endblock ps-subtitle %}
+        </div>
+    </div>
+    
+    <div class="ps-admin">
+        {% block ps-admin %}
+        {% endblock ps-admin %}
+    </div>
+
+    <div class="ps-body">
+        {% block ps-body %}
+        {% endblock ps-body %}
+    </div>
+    
+    <div class="ps-thread">
+    <span class="mmh-itemAdminLinks">
+        {% block ps-thread %}
+        {% endblock ps-thread %}
+    </span>        
+    </div>
+</div>   

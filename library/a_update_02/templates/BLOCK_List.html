@@ -1,0 +1,21 @@
+{% load tagLibrary_extras %}
+
+{% if objectList %}
+{% for object in objectList %}
+
+<div class="span-4">
+{% appURL a_update_02_VIEW_Contents object.0 object.2 %}
+</div>
+
+<div class="span-10 last">
+{% if object.1 %}
+{{ object.1 }}
+{% else %}
+&nbsp;
+{% endif %}
+</div>
+
+{% if not forloop.last %}<div class='span-14 mmh-list-spacer last'>&nbsp;</div>{% endif %}
+
+{% endfor %}
+{% endif %}

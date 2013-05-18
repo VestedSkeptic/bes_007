@@ -1,0 +1,5 @@
+{% if request.META.WEBSITE_IS_DOWN %}{% include "WEBSITE_IS_DOWN.html" %}{% else %}
+<b>404 ERROR:</b><br/>
+<br/>We could not find the page ({{request_path}}) you were looking for.
+<br/>Here is a link back to the <a href="/">home page</a>.
+{% endif %}

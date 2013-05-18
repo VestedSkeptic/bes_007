@@ -1,0 +1,10 @@
+{% if objectList %}
+{% include "B_paginationLinks.html" %}
+{% for object in objectList %}
+
+{% include "a_msgUser_02/templates/B_detail.html" %}
+{% if not forloop.last %}<div class='span-14 mmh-list-spacer last'>&nbsp;</div>{% endif %}
+
+{% endfor %}
+{% include "B_paginationLinks.html" %}
+{% endif %}

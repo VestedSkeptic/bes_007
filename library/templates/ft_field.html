@@ -1,0 +1,28 @@
+<li><label for="{{ field.auto_id }}">{{ field.label }}{% if field.field.required %}<em><img src='http://{{request.META.duo_mapHost}}/{{request.META.MEDIA_LIB}}/images/field_required_5x5.jpg' width="5" height="5" alt="required" /></em>{% endif %}{% if field.errors %}<strong>{{ field.errors.as_text|slice:"2:" }}{# TO REMOVE THE '* ' FROM THE START OF EACH ERROR #}</strong>{% endif %}{% if field.help_text %}<small>{{field.help_text}}</small>{% endif %}</label>{{ fieldString|safe }}</li>
+{% comment %}
+<li>
+    <label for="{{ field.auto_id }}">
+        {{ field.label }}
+        
+        {% if field.field.required %}
+            <em>
+                <img src='http://{{request.META.duo_mapHost}}/{{request.META.MEDIA_LIB}}/images/field_required_5x5.jpg' width="5" height="5" alt="required" />
+            </em>
+        {% endif %}
+        
+        {% if field.errors %}
+            <strong>
+                {{ field.errors.as_text|slice:"2:" }} {# TO REMOVE THE '* ' FROM THE START OF EACH ERROR #}
+            </strong>
+        {% endif %}
+        
+        {% if field.help_text %}
+            <small>
+                {{field.help_text}}
+            </small>
+        {% endif %}
+    </label>
+    
+    x{{ fieldString|safe }}y    
+</li>
+{% endcomment %}

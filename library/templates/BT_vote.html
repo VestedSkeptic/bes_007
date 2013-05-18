@@ -1,0 +1,17 @@
+<!-- BT_vote, start -->  
+<div style="width: 1.6em;" class="bes-align-center">
+    {% ifequal currentVote "up" %}
+        <div onclick="vote_onItem_03(this, {{object_id}}, '{{content_type}}', '{{ajaxProcessingUrlUp}}', '{{currentVote}}', 'up', '{{vote_1}}', '{{vote_2}}', '{{vote_3}}')"        class="arrow upmod"/></div>
+    {% else %}
+        <div onclick="vote_onItem_03(this, {{object_id}}, '{{content_type}}', '{{ajaxProcessingUrlUp}}', '{{currentVote}}', 'up', '{{vote_1}}', '{{vote_2}}', '{{vote_3}}')"        class="arrow up"/></div>
+    {% endifequal %}
+    
+    <div class="bes-align-center">{{currentTotal}}</div>
+    
+    {% ifequal currentVote "down" %}
+        <div onclick="vote_onItem_03(this, {{object_id}}, '{{content_type}}', '{{ajaxProcessingUrlDown}}', '{{currentVote}}', 'down', '{{vote_1}}', '{{vote_2}}', '{{vote_3}}')"    class="arrow downmod"/></div>
+    {% else %}
+        <div onclick="vote_onItem_03(this, {{object_id}}, '{{content_type}}', '{{ajaxProcessingUrlDown}}', '{{currentVote}}', 'down', '{{vote_1}}', '{{vote_2}}', '{{vote_3}}')"    class="arrow down"/></div>
+    {% endifequal %}
+</div>   
+<!-- BT_vote, end -->

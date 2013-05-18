@@ -1,0 +1,11 @@
+{% load form_tags %}
+{% include "FORM_Head.html" %}
+
+<div class="span-16 last">BB Code example tags: [b][i][u][s][color][size][link][img][list][code][center][quote]</div>
+
+{% render_field form.name "mmh-form-application" %}
+{% render_field form.explanation "mmh-form-application" %}
+{% render_field form.url "mmh-form-application" %}
+{% render_submit "mmh-form-application" %}
+
+{% include "FORM_Foot.html" %}

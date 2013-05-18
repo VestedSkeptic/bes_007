@@ -1,0 +1,11 @@
+{% load tagLibrary_extras %}Hi {{user.first_name}}, welcome to {{site_name}}.ca
+
+Your account was registered with the following information:
+username = {{user.username}}
+first_name = {{user.first_name}}
+last_name = {{user.last_name}}{% if invite_friendRequest %}
+
+{{invite_friendRequest}}{% endif %}
+
+Please click on the following link to validate your email address.
+http://{{BASE_URL}}{{validtionURL}}

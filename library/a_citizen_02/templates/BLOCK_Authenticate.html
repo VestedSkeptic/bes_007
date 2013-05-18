@@ -1,0 +1,53 @@
+{% load tagLibrary_extras %}
+{% load baseTag %}
+
+{% if object %}
+
+    <div class="span-14 last mmh-odd-item">
+    <div class="span-4 mmh-itemTitle">ID                                    </div>
+    <div class="span-10 mmh-itemBody last">{{ object.id }}                  </div>
+    </div>
+
+    <div class="span-14 last">
+    <div class="clear span-4 mmh-itemTitle">Full Name                       </div>
+    <div class="span-10 mmh-itemBody last">{{ object.name }}                </div>
+    </div>
+
+    <div class="span-14 last mmh-odd-item">
+    <div class="clear span-4 mmh-itemTitle">User Name                       </div>
+    <div class="span-10 mmh-itemBody last">{{ object.direct.username }}     </div>
+    </div>
+
+    <div class="span-14 last">
+    <div class="clear span-4 mmh-itemTitle">E-mail Address                  </div>
+    <div class="span-10 mmh-itemBody last">{{ object.direct.email }}        </div>
+    </div>
+
+    <div class="span-14 last mmh-odd-item">
+    <div class="clear span-4 mmh-itemTitle">E-mail Validated                </div>
+    <div class="span-10 mmh-itemBody last">{{ object.directEmailValidated }}</div>
+    </div>
+
+    <div class="span-14 last">
+    <div class="clear span-4 mmh-itemTitle">Facebook Name                   </div>
+    <div class="span-10 mmh-itemBody last">{{ object.facebook }}            </div>
+    </div>
+    {% ifnotequal object.authenticated_count 0 %}
+        <div class="span-14 last mmh-warning">
+        <div class="clear span-4 mmh-itemTitle">RE-AUTHENTICATION                   </div>
+        <div class="span-10 mmh-itemBody last">{{ object.authenticated_count }}        </div>
+        </div>
+    {% endifnotequal %}
+
+    <div class="span-14 last mmh-odd-item">
+    <div class="clear span-4 mmh-itemTitle">Reason Joined                   </div>
+    <div class="span-10 mmh-itemBody last">{{ object.reasonJoined }}        </div>
+    </div>
+
+    <div class="span-14 last">
+    <div class="clear span-4 mmh-itemTitle">Time Since Registered           </div>
+    <div class="span-10 mmh-itemBody last">{% baseTag bt_time_03 OBJECT=object.auto_createdTimeStamp:resolve MODE=timeSince %}   </div>
+    </div>
+    
+    <div class='span-14 mmh-list-spacer last'>&nbsp;</div>
+{% endif %}

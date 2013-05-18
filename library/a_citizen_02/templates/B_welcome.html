@@ -1,0 +1,32 @@
+{% load tagLibrary_extras %}
+{% load bbcode %}
+{% load baseTag %}
+
+
+{% if objectList %}
+{% for object in objectList %}
+    
+<div class="span-14 last">
+    <span class="mmh-itemTitle">
+    {{ object.name|slice:"3:" }}{% if debug %}&nbsp;({{ object.name|slice:":3" }}){% endif %}
+    </span>
+</div>
+<div class="span-14 last">
+    <span class="mmh-itemBody">
+    {{ object.comment|bbcode }}
+    </span>
+    <span class="mmh-itemAdminLinks">    
+    &nbsp;{% baseTag bt_interface_03_edit     OBJECT=object:resolve   MODE=s_developer  DELETECONFIRM=deleteConfirm:resolve %}
+    &nbsp;{% baseTag bt_interface_03_delete   OBJECT=object:resolve   MODE=s_developer  DELETECONFIRM=deleteConfirm:resolve %}
+    </span>
+</div>
+
+{% if not forloop.last %}<div class='span-14 mmh-list-spacer last'>&nbsp;</div>{% endif %}
+
+{% endfor %}
+{% endif %}
+
+
+{% comment %}
+{% endcomment %}
+    

@@ -1,0 +1,62 @@
+{% load tagLibrary_extras %}
+{% load bbcode %}
+{% load baseTag %}
+
+<!-- spacer between entries  -->
+{# <div class="span-14 mmh-replySpacer">&nbsp;</div> #}
+
+<!-- indention due to span grid hack -->
+<!-- this generates left gride entry equal to indention size which is blank -->
+<div class="span-{{indent}}" id="{{object.id}}">&nbsp;</div>
+
+<!-- indention due to span grid hack -->
+<!-- this generates right gride entry equal to remainder of indention which is filled by entry text -->
+{# <div class="bes-thread-item span-{{remainder}} last" style="white-space:normal"> #}
+<div class="span-{{remainder}} last">
+<div class="bes-thread-item" style="white-space:normal">
+    {% ifequal indent max_indent %}
+        {% baseTag bt_thread_03 OBJECT=object:resolve MODE=indentedchildren %}
+    {% else %} 
+        <span class="mmh-replyCitizen hide-for-edit">
+            {% baseTag bt_autoCitizenLink_03 OBJECT=object:resolve %}
+        </span>
+        <span class="mmh-replyData hide-for-edit">
+            {% baseTag bt_time_03 OBJECT=object.auto_createdTimeStamp:resolve MODE=timeSince %}{% if object.edited %}&nbsp;*{% endif %}
+        </span>
+        
+        <!-- blueContent  -->
+        <div class="hide-for-edit mmh-replyBody blueContent">{{object.comment|bbcode}}</div>    
+    
+        <!-- spanParent  -->
+        <span class="mmh-replyActions">
+    
+                {% if not indent %}{% baseTag bt_thread_03 OBJECT=object:resolve MODE=unseen_permalink_parent %}&nbsp;
+                {% else %}{% baseTag bt_thread_03 OBJECT=object:resolve MODE=parent %}&nbsp;
+                {% endif %}
+                
+                {% baseTag bt_thread_03 OBJECT=object:resolve MODE=permalink %}&nbsp;
+                
+                {% if request.META.duo_citizen %}
+                    {% ifequal request.META.duo_citizen.id object.auto_citizen_id %}
+                        <a href="#" onclick="return edit_03(this)">edit</a>&nbsp;       
+                        {# <a href="#" onclick="return delete_03(this)">delete</a>&nbsp; #}  
+                    {% endifequal %}
+    
+                    {% ifequal request.META.duo_citizen.authenticated 1 %}
+                        <a class="mmh-replyKey-01"                      href="#" onclick="return toggle_03(this, 'mmh-replyKey-01', reply_03)">reply</a>&nbsp;
+                        <a class="mmh-replyKey-01 inactive hackCancel"  href="#" onclick="return toggle_03(this, 'mmh-replyKey-01')">cancel</a>&nbsp;
+                        
+                        <!-- formSpan  -->
+                        <span class="mmh-replyKey-01 inactive" id="formSpan">{% baseTag bt_thread_03 OBJECT=object:resolve MODE=internal_form %}</span>
+                    {% endifequal %}
+                {% endif %}
+        </span>
+    {% endifequal %}
+</div>
+</div>
+
+{% comment %}
+{% block ps-lcol %}
+    {% baseTag bt_vote_03 OBJECT=object:resolve MODE=rank %}
+{% endblock ps-lcol %}
+{% endcomment %}

@@ -1,0 +1,49 @@
+{% load form_tags %}{% if form.is_multipart %}<form method="post" onsubmit="return submit_reply_04(this);" class="mmh-form-threadEntry" id="{{form_name}}_id" name="{{form_name}}"{{ form_action|safe }} enctype="multipart/form-data">
+{% else %}<form method="post" onsubmit="return submit_reply_04(this);" class="mmh-form-threadEntry" id="{{form_name}}_id" name="{{form_name}}"{{ form_action|safe }}>
+{% endif %}
+    
+    <table align="left" class="mmh-form-threadEntry"><tbody>
+    <tr><td align="center">
+        {% render_field_bare form.comment                %}
+        {% render_field_bare form.hiddenUniqueIdentifier %}
+        {% render_field_bare form.hiddenWasEdited        %}
+    </td></tr>
+    <tr><td align="center">
+        <button name="submit">submit</button>
+        <button name="cancel" style="display:none;" onclick="cancel_edit_05(this);return false;">cancel</button>
+    </td></tr>
+        {% if form_non_field_errors %}
+        <tr><td>
+            {% render_non_field_errors form_non_field_errors %}
+        </td></tr>
+        {% endif %}
+    </tbody></table>
+    
+</form>
+
+
+{% comment %}
+    {% load ft_formTags %}
+    
+    {% if form.is_multipart %}
+    <form method="post" onsubmit="return submit_reply_04(this);" class="mmh-formTopLabel mmh-form-threadEntry" id="{{form_name}}_id" name="{{form_name}}"{{ form_action|safe }} enctype="multipart/form-data">
+    {% else %}
+    <form method="post" onsubmit="return submit_reply_04(this);" class="mmh-formTopLabel mmh-form-threadEntry" id="{{form_name}}_id" name="{{form_name}}"{{ form_action|safe }}>
+    {% endif %}
+    
+    {#  {% ft_formclass         "mmh-formTopLabel" %}                               #}        {# classnames #}        
+    {#  {% ft_formclass         "mmh-formLeftLabel" %}                              #}        {# classnames #}        
+    {#  {% ft_formclass         "mmh-formTopLabel mmh-formFieldSetsConnect" %}      #}        {# classnames #}        
+    {#  {% ft_formclass         "mmh-formLeftLabel mmh-formFieldSetsConnect" %}     #}        {# classnames #}        
+    {#  {% ft_errorbanner       form_non_field_errors form_field_errors %}          #}        {# always those two parameters #}
+    
+    {% ft_fieldset_start    "Comments" %}                                               {# legend, opt_classname #} 
+    {% ft_field             form.comment                   request %}                   {# field, request #} 
+    {% ft_button            "submit" "submit" "Submit" %}                               {# classname, typename, value #} 
+    {% ft_button            "mmh-display-none" "cancel" "cancel" "onclick" "cancel_edit_05(this);return false;"%}                               {# classname, typename, value, eventname, eventaction #} 
+    {% ft_fieldset_end      %}                                                          {# none #} 
+    {% ft_hidden            form.hiddenUniqueIdentifier    %}                           {# field #}
+    {% ft_hidden            form.hiddenWasEdited           %}                           {# field #}
+    
+    {% include "ft_foot.html" %}
+{% endcomment %}

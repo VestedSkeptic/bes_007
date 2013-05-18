@@ -1,0 +1,6 @@
+<div class="span-7 bes-align-left">
+	{% if page_first %}{{page_first|safe}}&nbsp;|&nbsp;{{page_previous|safe}}{% else %}&nbsp;{% endif %}
+</div>
+<div class="span-7 last bes-align-right">
+	{% if page_last %}{{page_next|safe}}&nbsp;|&nbsp;{{page_last|safe}}{% else %}&nbsp;{% endif %}
+</div>

@@ -1,0 +1,27 @@
+{% load tagLibrary_extras %}
+{% load bbcode %}
+{% load baseTag %}    
+    
+<div class="span-14 last">
+    <span class="mmh-itemTitle">
+        {% appURL a_msgUser_global_02_VIEW_Detail object.name object.id %}
+    </span>
+</div>
+
+{% if object.comment %}
+<div class="span-14 mmh-itemBody last">
+    {{ object.comment|bbcode }}
+</div>
+{% endif %}
+
+<div class="span-14 last">
+    <span class="mmh-itemAdminLinks">
+        added by
+    </span>
+    {% baseTag bt_autoCitizenLink_03 OBJECT=object:resolve %}
+    <span class="mmh-itemAdminLinks">
+        {% baseTag bt_time_03 OBJECT=object.auto_createdTimeStamp:resolve MODE=timeSince %}
+        &nbsp;{% baseTag bt_interface_03_edit   OBJECT=object:resolve MODE=s_developer DELETECONFIRM=deleteConfirm:resolve  %}
+        &nbsp;{% baseTag bt_interface_03_delete OBJECT=object:resolve MODE=s_developer DELETECONFIRM=deleteConfirm:resolve  %}
+    </span>
+</div>

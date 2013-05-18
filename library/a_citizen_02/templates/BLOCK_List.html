@@ -1,0 +1,25 @@
+{% load tagLibrary_extras %}
+
+{% if objectList %}
+
+<div class="span-2"><b>ID</b></div>
+<div class="span-2"><b>Direct</b></div>
+<div class="span-2"><b>Joined</b></div>
+<div class="span-2"><b>Email Validated</b></div>
+<div class="span-2"><b>Auth</b></div>
+<div class="span-2"><b>Auth Count</b></div>
+<div class="span-2 last">&nbsp;</div>
+
+{% for object in objectList %}
+<div class="span-2 clear">{% appURL a_citizen_02_VIEW_Detail object.id object.id %}</div>
+<div class="span-2">	  {{ object.direct }}{% if object.direct%}<br/>{{object.direct.email}}{% endif %}</div>
+<div class="span-2">	  {{ object.auto_createdTimeStamp|timestampFormat:"%y/%m/%d"|safe }}</div>
+<div class="span-2">	  {{ object.directEmailValidated }}</div>
+<div class="span-2">	  {{ object.authenticated }}</div>
+<div class="span-2">	  {{ object.authenticated_count }}</div>
+<div class="span-2 last"> {% appURL a_citizen_02_VIEW_Edit "e" object.id %}</div>
+
+{% if not forloop.last %}<div class='span-14 mmh-list-spacer last'>&nbsp;</div>{% endif %}
+
+{% endfor %}
+{% endif %}

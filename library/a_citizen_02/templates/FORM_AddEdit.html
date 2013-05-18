@@ -1,0 +1,14 @@
+{% load form_tags %}
+{% include "FORM_Head.html" %}
+
+{% comment %}
+{% endcomment %}
+
+{% render_field form.name "mmh-form-application" %}
+{% render_field form.directEmailValidated "mmh-form-application" %}
+{% render_field form.authenticated "mmh-form-application" %}
+{% render_field form.reasonJoined "mmh-form-application" %}
+
+{% render_submit "mmh-form-application" %}
+
+{% include "FORM_Foot.html" %}

@@ -1,0 +1,11 @@
+{% if objectList %}
+{% for object in objectList %}
+
+{% if not forloop.first%}&nbsp;|&nbsp;{% endif %}
+
+{% if object.4 %}<b>{{object.1|upper}}</b>
+{% else %}<a href='{{object.3}}'>{{object.1|lower}}</a>
+{% endif %}
+
+{% endfor %}
+{% endif %}

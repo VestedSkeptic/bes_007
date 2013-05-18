@@ -1,0 +1,7 @@
+Q: Is there a way I can add a magic comment or something like that to the end of the line to make PyDev ignore 
+the false error, similar to how you can sprinkle comments like "# pylint: disable-msg=E1101" to make PyLint 
+ignore errors?
+
+A: Add the hash character # at the end of the line then with the cursor on the flagged error, press Ctrl-1. 
+One of the options in the menu will be something like @UndefinedVariable. Adding this comment will cause PyDev 
+to ignore the error.

@@ -1,0 +1,33 @@
+{% comment %}
+        {% if request.META.duo_Direct %}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+        <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+        <head>{% include "BASE_Meta.html" %}<title>{{request.META.bes_title}}</title>
+        <link rel="stylesheet" href="http://{{request.META.HTTP_HOST}}/{{request.META.MEDIA_LIB}}/css/reset-fonts-grids.css"    type="text/css" media="screen, projection"/>
+        <link rel="stylesheet" href="http://{{request.META.HTTP_HOST}}/{{request.META.MEDIA_LIB}}/css/typography.css"           type="text/css" media="screen, projection"/>
+        <link rel="stylesheet" href="http://{{request.META.HTTP_HOST}}/{{request.META.MEDIA_LIB}}/css/grid.css"                 type="text/css" media="screen, projection"/>
+        <link rel="stylesheet" href="http://{{request.META.HTTP_HOST}}/{{request.META.MEDIA_LIB}}/css/forms.css"                type="text/css" media="screen, projection"/>
+        <link rel="stylesheet" href="http://{{request.META.HTTP_HOST}}/{{request.META.MEDIA_LIB}}/css/library_styles.css"       type="text/css" media="screen, projection"/>
+        <link rel="stylesheet" href="http://{{request.META.HTTP_HOST}}/{{request.META.MEDIA_PRJ}}/css/prj_styles.css"           type="text/css" media="screen, projection"/>
+        <link rel="stylesheet" href="http://{{request.META.HTTP_HOST}}/{{request.META.MEDIA_LIB}}/css/print.css"                type="text/css" media="print"/>    
+        <!--[if IE]><link rel="stylesheet" href="http://{{request.META.HTTP_HOST}}/{{request.META.MEDIA_LIB}}/css/ie.css"       type="text/css" media="screen, projection"/><![endif]-->
+        <script type="text/javascript" src="http://{{request.META.HTTP_HOST}}/{{request.META.MEDIA_LIB}}/javascript/jquery-1.2.6.js"></script>
+        <script type="text/javascript" src="http://{{request.META.HTTP_HOST}}/{{request.META.MEDIA_LIB}}/javascript/besomeone.js"></script>
+        </head><body>&nbsp;
+        {% else %}
+        <head>
+        <link rel="stylesheet" type="text/css" media="screen" href="http://{{request.META.HTTP_HOST}}/{{request.META.MEDIA_LIB}}/css/reset-fonts-grids.css?v={{request.META.VERSION_MAJOR}}.{{request.META.VERSION_MINOR}}"/>
+        <link rel="stylesheet" type="text/css" media="screen" href="http://{{request.META.HTTP_HOST}}/{{request.META.MEDIA_LIB}}/css/typography.css?v={{request.META.VERSION_MAJOR}}.{{request.META.VERSION_MINOR}}"/>
+        <link rel="stylesheet" type="text/css" media="screen" href="http://{{request.META.HTTP_HOST}}/{{request.META.MEDIA_LIB}}/css/grid.css?v={{request.META.VERSION_MAJOR}}.{{request.META.VERSION_MINOR}}"/>
+        <link rel="stylesheet" type="text/css" media="screen" href="http://{{request.META.HTTP_HOST}}/{{request.META.MEDIA_LIB}}/css/forms.css?v={{request.META.VERSION_MAJOR}}.{{request.META.VERSION_MINOR}}"/>
+        <link rel="stylesheet" type="text/css" media="screen" href="http://{{request.META.HTTP_HOST}}/{{request.META.MEDIA_LIB}}/css/library_styles.css?v={{request.META.VERSION_MAJOR}}.{{request.META.VERSION_MINOR}}"/>
+        <link rel="stylesheet" type="text/css" media="screen" href="http://{{request.META.HTTP_HOST}}/{{request.META.MEDIA_PRJ}}/css/prj_styles.css?v={{request.META.VERSION_MAJOR}}.{{request.META.VERSION_MINOR}}"/>
+        </head>
+        {% endif %}
+{% endcomment %}
+
+{% load compressed %}
+{# This version is not attempting to handle facebook nor print.css nor prj_styles.css nor ie.css #}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head>{% include "BASE_Meta.html" %}<title>{{request.META.bes_title}}</title>
+{% compressed_css 'group_one_css' %}
+{% compressed_js 'all_js' %}
+</head><body>&nbsp;

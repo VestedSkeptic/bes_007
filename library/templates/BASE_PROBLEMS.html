@@ -1,0 +1,12 @@
+{% extends "BASE.html" %}
+{% load tagLibrary_extras %}
+
+{% block main_navigation_menu %}
+    {% if request.META.baseContext_navigationMenu_PROBLEM %}
+        {{ request.META.baseContext_navigationMenu_PROBLEM|safe }}
+        {% if request.META.baseContext_navigationMenu_PROBLEM_LOCAL %}<br/>{% endif %}
+    {% endif %}            
+       {% if request.META.baseContext_navigationMenu_PROBLEM_LOCAL %}
+        {{ request.META.baseContext_navigationMenu_PROBLEM_LOCAL|safe }}
+    {% endif %} 
+{% endblock %}

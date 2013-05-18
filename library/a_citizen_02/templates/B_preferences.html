@@ -1,0 +1,23 @@
+{% load tagLibrary_extras %}
+
+{% if prefList %}
+{% for entry in prefList %}
+
+<div class="{% cycle 'span-14 mmh-odd-item' 'span-14 mmh-even-item' %}">
+	<div class="span-14">
+		<div class="span-13 mmh-itemTitle">           {{ entry.title }}           </div>
+		<div class="span-1 mmh-itemAdminLinks last">  {{ entry.editLink|safe}}    </div>
+	</div>
+	
+	{% for line in entry.displayList %}
+		<div class="span-14 mmh-itemBody last">
+		<div class="span-1">     &nbsp;       </div>
+		<div class="span-6">     {{ line.0 }} </div>
+		<div class="span-6">     {% if line.1 %}{{ line.1 }}{% else %}&nbsp;{% endif %} </div>
+		<div class="span-1 last">&nbsp;       </div>
+		</div>
+	{% endfor %}
+</div>
+
+{% endfor %}
+{% endif %}

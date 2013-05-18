@@ -1,0 +1,12 @@
+{% load ft_formTags %}
+{% include "ft_head.html" %}
+{% ft_formclass         "mmh-formTopLabel" %}                                       {# classnames #}
+{% ft_errorbanner       form_non_field_errors form_field_errors %}                  {# always those two parameters #}
+{% ft_fieldset_start    "Submit this data to request a password change" %}          {# legend, opt_classname #} 
+{% ft_instructions      request '' %}                                               {# request opt_bbcodetext #}                                                                                     
+{% ft_field             form.username          request %}                           {# field, request #} 
+{% ft_field             form.email             request %}                           {# field, request #}
+{% ft_button            "submit" "submit" "Submit" %}                               {# classname, typename, value #}                                                                                      
+{% ft_fieldset_end      %}                                                          {# none #}    
+
+{% include "ft_foot.html" %}

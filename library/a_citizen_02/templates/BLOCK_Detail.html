@@ -1,0 +1,21 @@
+{% load tagLibrary_extras %}
+{% load baseTag %}
+
+<div class="span-12 mmh-itemTitle">
+    {% baseTag bt_citizen_03 OBJECT=object:resolve MODE=noformat %}
+</div>
+<div class="span-2 mmh-itemAdminLinks last">
+    {% baseTag bt_friendRequestLink_03 OBJECT=object:resolve %}
+</div>
+
+<div class="span-3 mmh-itemBody">Reason for joining</div>
+<div class="span-11 mmh-itemBody last">{{ object.reasonJoined }}</div>
+
+<div class="span-3 mmh-itemBody">Email validated:</div>
+<div class="span-11 mmh-itemBody last">{% if object.directEmailValidated %}yes{%else%}no{%endif%}</div>
+
+<div class="span-3 mmh-itemBody">Account authenticated:</div>
+<div class="span-11 mmh-itemBody last">{% ifequal object.authenticated 1 %}yes{%else%}no{%endifequal%}</div>
+
+<div class="span-3 mmh-itemBody">Account authenticated_count:</div>
+<div class="span-11 mmh-itemBody last">{{ object.authenticated_count }}</div>

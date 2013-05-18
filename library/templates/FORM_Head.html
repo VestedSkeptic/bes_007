@@ -1,0 +1,5 @@
+{% if form.is_multipart %}
+	<form method="post" id="{{form_name}}_id" name="{{form_name}}"{{ form_action|safe }} enctype="multipart/form-data">
+{% else %}
+	<form method="post" id="{{form_name}}_id" name="{{form_name}}"{{ form_action|safe }}>
+{% endif %}

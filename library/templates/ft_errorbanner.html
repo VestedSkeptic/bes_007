@@ -1,0 +1,1 @@
+{% load ft_formTags %}{% if form_non_field_errors %}{% comment %}{% if form_non_field_errors or form_field_errors %}{% endcomment %}{% ft_fieldset_start "Errors" "formError" %}{% ft_rendererrors form_non_field_errors form_field_errors %}{% ft_fieldset_end %}{% endif %}

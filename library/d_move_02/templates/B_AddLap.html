@@ -1,0 +1,17 @@
+{% load tagLibrary_extras %}{% load bbcode %}{% load baseTag %}{% load humanize %}{# BODY #}
+
+<b>
+<div class="span-3">Pilot</div>
+<div class="span-2" align="right">Amount</div>
+<div class="span-2" align="right">Date</div>
+<div class="span-7 last">Reason</div>
+</b>
+
+{% for item in items %}
+<div class="span-3">{{ item.traderName }}</div>
+<div class="span-2" align="right">{{ item.amount|intcomma }}</div>
+<div class="span-2" align="right">{{ item.auto_createdTimeStamp|timestampFormat:"%y/%m/%d"|safe }}</div>
+<div class="span-7 last">{{ item.reason }}</div>
+<br>
+{% endfor %}
+

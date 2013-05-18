@@ -1,0 +1,31 @@
+{% load tagLibrary_extras %}
+{% load bbcode %}
+{% load baseTag %}
+
+{% if objectList %}
+{% for object in objectList %}
+<div class="span-14 mmh-replySpacer">&nbsp;</div>
+<div class="span-14 mmh-replySpacer">&nbsp;</div>
+<div class="span-14 mmh-replySpacer">&nbsp;</div>
+
+<div class="span-14 mmh-replyCitizen last">
+{% if not object.read %}<span class="notRead">{% endif %}
+    {% baseTag bt_autoCitizenLink_03 OBJECT=object:resolve %}
+{% if not object.read %}</span>{% endif %}
+    {% baseTag bt_time_03 OBJECT=object.auto_createdTimeStamp:resolve MODE=timeSince %}{% if object.edited %}&nbsp;*{% endif %}
+</div>
+
+<div class="span-14 mmh-replyBody last">
+    {{object.post.comment|bbcode}}
+</div>
+
+<div class="span-14 mmh-replyActions last">
+    {% baseTag bt_thread_03     OBJECT=object.post:resolve  MODE=context %}
+</div>
+
+{% if not forloop.last %}
+<div class="span-14 mmh-replySpacer">&nbsp;</div>
+{% endif %}
+	
+{% endfor %}
+{% endif %}

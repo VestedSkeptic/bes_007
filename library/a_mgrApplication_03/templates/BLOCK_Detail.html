@@ -1,0 +1,41 @@
+{% load tagLibrary_extras %}
+{% load bbcode %}
+{% load baseTag %}
+
+{# small hack to handle that this template is provided with slightly different data between list and detail modes but is used for both. #}
+{% if object.0 %}
+    <div class="span-8 mmh-itemTitle">
+        {{ object.0.name }}
+    </div>
+    
+    <div class="span-2">
+        &nbsp;{% ifequal request.META.citizen_rights.name "developer" %}{% if object.0.released%}(released){% else %}(not released){% endif %}{% endifequal %}        
+    </div>
+    
+    <div class="span-4 mmh-itemAdminLinks bes-align-right last">
+        {% appURL a_mgrApplication_03_VIEW_subscribetoggle object.1 object.0.id %}
+        &nbsp;{% baseTag bt_interface_03_edit       OBJECT=object.0:resolve   MODE=s_developer          DELETECONFIRM=deleteConfirm:resolve %}
+        &nbsp;{% baseTag bt_interface_03_delete     OBJECT=object.0:resolve   MODE=s_developer          DELETECONFIRM=deleteConfirm:resolve %}
+    </div>
+    
+    <div class="span-14 mmh-itemBody last">
+    {{ object.0.comment|bbcode }}    
+    </div>
+{% else %}
+    <div class="span-10 mmh-itemTitle">
+        {{ object.name }}
+    </div>
+    
+    <div class="span-2">
+        &nbsp;{% ifequal request.META.citizen_rights.name "developer" %}{% if object.released%}(released){% else %}not released{% endif %}{% endifequal %}        
+    </div>
+    
+    <div class="span-4 mmh-itemAdminLinks bes-align-right last">
+        &nbsp;{% baseTag bt_interface_03_edit       OBJECT=object:resolve   MODE=s_developer          DELETECONFIRM=deleteConfirm:resolve %}
+        &nbsp;{% baseTag bt_interface_03_delete     OBJECT=object:resolve   MODE=s_developer          DELETECONFIRM=deleteConfirm:resolve %}
+    </div>
+    
+    <div class="span-14 mmh-itemBody last">
+    {{ object.comment|bbcode }}    
+    </div>
+{% endif %}

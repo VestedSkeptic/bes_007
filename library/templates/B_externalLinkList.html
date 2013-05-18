@@ -1,0 +1,16 @@
+{% extends "side_item_layout.html" %}
+
+{% block ps-title %}
+    {{title}}
+{% endblock ps-title %}
+
+{% block ps-subtitle %}
+{% endblock ps-subtitle %}
+
+{% block ps-body %}
+    <div>
+    {% for link in listOfLinks %} 
+        <a href="http://{{link}}"  target="_blank">{{link}}</a><br/>
+    {% endfor %}
+    </div> 
+{% endblock ps-body %}  

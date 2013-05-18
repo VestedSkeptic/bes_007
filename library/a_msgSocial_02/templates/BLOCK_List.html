@@ -1,0 +1,37 @@
+{% load tagLibrary_extras %}
+
+{% comment %}
+{% endcomment %}
+
+
+{% if objectList %}
+
+<div class="span-4"><b>			messageName		    </b></div>
+<div class="span-2"><b>			auto_citizen		</b></div>
+<div class="span-2"><b>	    	destination     	</b></div>
+<div class="span-2"><b>	        priority        	</b></div>
+<div class="span-4"><b>	        kwargs          	</b></div>
+<div class="span-2 last"><b>	status              </b></div>
+
+{% for object in objectList %}
+<div class="{% cycle 'cell-16 last mmh-odd-item' 'cell-16 last mmh-even-item' %}">
+<div class="span-4"><b>		{{ object.messageName }}		    </b></div>
+<div class="span-2">    	{{ object.auto_citizen.facebook }}		</div>
+<div class="span-2">	    {{ object.destination }}     	        </div>
+<div class="span-2">	    {{ object.priority }}        	        </div>
+<div class="span-4">	    {{ object.kwargs }}           &nbsp;	</div>
+<div class="span-2 last">	{{ object.status }}                     </div>
+
+<div class="span-4"><b>sentTitle:</b></div>
+<div class="span-12 last">{{ object.sentTitle }}</div>
+<div class="span-4"><b>sentBody:</b></div>
+<div class="span-12 last">{{ object.sentBody }}&nbsp;</div>
+<div class="span-4"><b>sentBodyGeneral:</b></div>
+<div class="span-12 last">{{ object.sentBodyGeneral }}&nbsp;</div>
+
+<div class="span-16 last">&nbsp;</div>
+</div>
+{% endfor %}
+{% else %}
+<div class="span-16 last">No objects to display</div>
+{% endif %}

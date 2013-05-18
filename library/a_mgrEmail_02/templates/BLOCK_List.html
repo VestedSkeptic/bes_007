@@ -1,0 +1,24 @@
+{% load tagLibrary_extras %}
+
+{% if objectList %}
+{% for object in objectList %}
+
+<div class="{% cycle 'cell-16 last mmh-odd-item' 'cell-16 last mmh-even-item' %}">
+
+<div class="span-4"> 		<b>Subject</b>				</div>
+<div class="span-12 last">  {{object.subject}}     		</div>
+<div class="span-4"> 		<b>ToList</b>				</div>
+<div class="span-12 last">  {{object.toList}}     		</div>
+<div class="span-4"> 		<b>bodyTemplate</b>			</div>
+<div class="span-12 last">  {{object.bodyTemplate}}     &nbsp;</div>
+<div class="span-4"> 		<b>bodyContextDict</b>		</div>
+<div class="span-12 last">  {{object.bodyContextDict}}  &nbsp;</div>
+<div class="span-4"> 		<b>bodyText</b>				</div>
+<div class="span-12 last">  {{object.bodyText}}     	&nbsp;</div>
+<div class="span-4"> 		<b>sent</b>					</div>
+<div class="span-12 last">  {{object.sent}}     		</div>
+
+</div>
+
+{% endfor %}
+{% endif %}

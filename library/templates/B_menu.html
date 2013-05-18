@@ -1,0 +1,7 @@
+{% if object %}
+    {% if object.selected %}
+        <a href='{{object.reversedLink}}' class="on">{{object.displayText}}</a>
+    {% else %}
+        <a href='{{object.reversedLink}}'>{{object.displayText}}</a>
+    {% endif %}
+{% endif %}

@@ -1,0 +1,68 @@
+
+
+
+{% comment %}
+
+   	    {% if debug %}
+   	        <div class="span-4 last">&nbsp;</div>
+            <div class="span-4 mmh-pad-above last" align="center">
+                google search
+   	        </div>
+
+   	        <div class="span-4 last">&nbsp;</div>
+            <div class="span-4 mmh-pad-above last" align="center">
+                rss feed
+   	        </div>
+
+   	        <div class="span-4 last">&nbsp;</div>
+            <div class="span-4 mmh-pad-above last" align="center">
+                recent comments
+   	        </div>
+
+   	        <div class="span-4 last">&nbsp;</div>
+            <div class="span-4 mmh-pad-above last" align="center">
+                recent posts
+   	        </div>
+
+   	        <div class="span-4 last">&nbsp;</div>
+            <div class="span-4 mmh-pad-above last" align="center">
+                tag cloud
+   	        </div>
+
+   	        <div class="span-4 last">&nbsp;</div>
+            <div class="span-4 mmh-pad-above last" align="center">
+                top contributers
+   	        </div>
+   	        <div class="span-4 last">&nbsp;</div>
+   	    {% endif %}
+
+{% include "BASE_poweredBy.html" %}
+
+
+{% if paginatedListFound %}
+	<div class="cell-16 paginationNav last">
+		{% include "BASE_paginateList_prevnext.html" %}
+	</div>
+{% endif %}
+
+
+{% if request.META.FB_DENIED %}
+	{{ request.META.FB_DENIED|safe }}
+{% else %}
+	{{ main_1 }}
+	{% if main_2 %}<br/>{{ main_2 }}{% endif %}
+	{% if main_3 %}<br/>{{ main_3 }}{% endif %}
+	{% if main_4 %}<br/>{{ main_4 }}{% endif %}
+{% endif %}
+
+{% if request.META.devAdmin_display %}
+	{% if request.META.iurlRaw_NA_Names %}
+		<b>NA iurlRaw:</b><br/>
+		{% for link in request.META.iurlRaw_NA_Names %}
+			{{link|safe}}<br/>
+		{% endfor %}				
+	{% endif %}
+{% endif %}
+
+
+{% endcomment %}

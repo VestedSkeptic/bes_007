@@ -1,0 +1,25 @@
+{% load form_tags %}
+{% include "FORM_Head.html" %}
+
+{% comment %}
+{% endcomment %}
+
+{% render_field form.userName       "mmh-form-application" %}
+{% render_field form.firstName      "mmh-form-application" %}
+{% render_field form.lastName       "mmh-form-application" %}
+{% render_field form.email          "mmh-form-application" %}
+{% render_field form.pass1          "mmh-form-application" %}
+{% render_field form.pass2          "mmh-form-application" %}
+{% render_field form.reasonJoined   "mmh-form-application" %}
+
+<div class="span-4">&nbsp;</div><div class="span-10 last">
+Prove you not an automated spam robot.
+</div>
+<div class="span-4">&nbsp;</div><div class="span-10 last">
+{% include "BLOCK_recaptcha.html" %}
+</div>
+<div class="span-4">&nbsp;</div><div class="span-10 last">
+{% render_submit_bare "mmh-form-application" %}
+</div>
+
+{% include "FORM_Foot.html" %}

@@ -1,0 +1,17 @@
+{% load tagLibrary_extras %}{% load bbcode %}{% load baseTag %}{% load humanize %}{# BODY #}
+
+
+
+{% if laps %}
+<div class="span-2 clear" align="left"><b>Date</b></div> 
+<div class="span-1" align="right"><b>Laps</b></div>
+<div class="span-11 last" align="left"><b>Comment</b></div>
+
+{% for object in laps %}
+<div class="{% cycle 'span-14 mmh-odd-item' 'span-14 mmh-even-item' %}">
+<div class="span-2 clear" align="left">{{object.date}}</div> 
+<div class="span-1" align="right">{{ object.laps}}</div>
+<div class="span-11 last" align="left">{{object.comment}}&nbsp;</div>
+</div>
+{% endfor %}
+{% endif %}

@@ -1,0 +1,46 @@
+{% spaceless %}
+<div class="bes-item">
+
+    <div>
+        <span class="ps-title-pre">
+            {% block ps-title-pre %}{% endblock ps-title-pre %}
+        </span>
+        
+        <h1 class="mmh-inline">
+        <span class="ps-title">
+            {% block ps-title %}{% endblock ps-title %}
+        </span>
+        </h1>
+        
+        <span class="ps-title-post">
+            {% block ps-title-post %}{% endblock ps-title-post %}
+        </span>
+    </div>
+
+    <div class="ps-subtitle">
+        {% block    ps-subtitle %}
+        {% endblock ps-subtitle %}
+    </div>
+    
+    <div class="ps-admin">
+        {% block    ps-admin %}
+        {% endblock ps-admin %}
+    </div>
+
+    <div class="ps-body">
+        {% block    ps-body %}
+        {% endblock ps-body %}
+    </div>
+
+    <div class="ps-subbody">
+        {% block    ps-subbody %}
+        {% endblock ps-subbody %}
+    </div>
+    
+    <div class="ps-footer">
+        {% block    ps-footer %}
+        {% endblock ps-footer %}
+    </div>
+
+</div>   
+{% endspaceless %}

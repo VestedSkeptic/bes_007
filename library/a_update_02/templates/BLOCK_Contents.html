@@ -1,0 +1,41 @@
+{% load tagLibrary_extras %}
+
+<div class="span-14 last">
+<div class="span-4">{{ objInfo.0.0 }}</div>
+<div class="span-8">{% if objInfo.0.1 %}{{ objInfo.0.1 }}{% else %}&nbsp;{% endif %}</div>
+<div class="span-2 last">{% appURL a_update_02_VIEW_ResetTo "reset to" objInfo.0.2 %}</div>
+</div>
+
+<div class="span-14 last">
+
+{% if sortedList %}
+<div class="span-14 box-red last">
+<div class="span-4"><B>Full Model Name</B></div>
+<div class="span-4"><B>nonStandardClassName</B></div>
+<div class="span-2"><B>Instance Count</B></div>
+<div class="span-4 last">&nbsp;</div>
+</div>
+
+{% for v in sortedList %}
+
+{% if v.4 %}
+<div class="span-14 last box-1">
+{% else %}
+<div class="span-14 last">
+{% endif %}
+
+<div class="span-4">{{ v.0 }}</div>
+<div class="span-4">{{ v.1 }}</div>
+<div class="span-2">{{ v.2 }}</div>
+<div class="span-4 last">&nbsp;</div>
+</div>
+
+{% if v.5 %}
+<div class="span-7">&nbsp;</div>
+<div class="span-7 box-red last"><b>ERROR: {{v.5}}</b></div>
+{% endif %}
+
+{% endfor %}
+{% endif %}
+
+</div>

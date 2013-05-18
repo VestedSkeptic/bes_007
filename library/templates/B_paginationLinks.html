@@ -1,0 +1,10 @@
+{% if page_first or page_last %}
+<div class="mmh-main-container">  
+    <div class="bes-align-left col-left mmh-inline">
+        {% if page_first %}{{page_first|safe}}&nbsp;|&nbsp;{{page_previous|safe}}{% else %}&nbsp;{% endif %}
+    </div>
+    <div class="bes-align-right col-right mmh-inline">
+        {% if page_last %}{{page_next|safe}}&nbsp;|&nbsp;{{page_last|safe}}{% else %}&nbsp;{% endif %}
+    </div>
+</div>
+{% endif %}

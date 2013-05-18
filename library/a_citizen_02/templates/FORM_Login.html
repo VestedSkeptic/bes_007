@@ -1,0 +1,24 @@
+{% load form_tags %}{% load tagLibrary_extras %}
+
+{% comment %}
+{% include "FORM_HeadInline.html" %}
+&nbsp;user name&nbsp;{% render_field_bare form.username "mmh-inline" %}&nbsp;<br>
+&nbsp;password&nbsp;{% render_field_bare form.password "mmh-inline" %}&nbsp;<br>
+{% render_submit_bare "mmh-inline" "login" %}&nbsp;<br>
+{% include "FORM_Foot.html" %}
+&nbsp;{% appURL a_citizen_02_VIEW_Register "join" %}
+&nbsp;{% appURL a_urlPassChange_02_VIEW_changeRequest "recover password" %}&nbsp;
+{% endcomment %}
+
+
+
+
+{% include "FORM_HeadInline.html" %}
+{% render_field_login form.username      %}
+{% render_field_login form.password      %}
+{% render_submit_login "login" %}
+{% include "FORM_Foot.html" %}
+<div class="mmh-width_percent_90 bes-align-center">
+{% appURL a_citizen_02_VIEW_Register "join" %}
+&nbsp;{% appURL a_urlPassChange_02_VIEW_changeRequest "recover password" %}
+</div>

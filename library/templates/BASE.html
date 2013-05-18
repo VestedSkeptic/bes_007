@@ -1,0 +1,160 @@
+{% load tagLibrary_extras %}{% load compressed %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+{% comment %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+{% encomment %}
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
+{% comment %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html> 
+{% endcomment %}
+<head>
+{% include "BASE_Meta.html" %}
+<title>{{request.META.bes_title}}</title>
+{% compressed_css 'group_two_css' %}
+{% compressed_js 'all_js' %}
+
+{% block map_header %}
+    {% if request.META.map_header %}{{request.META.map_header|safe}}</head><body onload="load()">
+    {% else %}</head><body>
+    {% endif %}              
+{% endblock map_header %}
+
+<!-- END OF HEADER, START OF BODY -->
+
+<div class="container">
+    <div class="bes-full-column last">
+        {% if request.META.a_msgUser_global_message_list %}
+        {% for entry in request.META.a_msgUser_global_message_list %}
+        <div class="bes-full-column formError last bes-align-center">
+        {{entry}}
+        </div>
+        {% endfor %}
+        {% endif %}    
+    </div>
+
+        {% if request.META.baseContext_navigationMenu_CITIZEN %}
+    <div class="bes-full-column bes-navMenu bes-align-right last">
+        {{ request.META.baseContext_navigationMenu_CITIZEN|safe }}
+           {% if request.META.baseContext_navigationMenu_CITIZEN_LOCAL %}
+           <br/>{{ request.META.baseContext_navigationMenu_CITIZEN_LOCAL|safe }}
+           {% endif %}
+    </div>
+        {% endif %}
+
+    <div class="bes-full-column last">
+        {% comment %}
+        <a href="{{ request.META.baseContext_linkHome}}"><img src='http://{{request.META.duo_mapHost}}/{{request.META.MEDIA_PRJ}}/images/besomeone-logo-958x100.jpg' width="958" height="100" alt="be someone" /></a>
+        <a href="{{ request.META.baseContext_linkHome}}"><img src='http://{{request.META.duo_mapHost}}/{{request.META.MEDIA_PRJ}}/images/stp.png' width="375" height="100" alt="solving the problem, someone has to do it" /><img src='http://{{request.META.duo_mapHost}}/{{request.META.MEDIA_PRJ}}/images/besomeone-text-transparent-583x100.png' width="583" height="100" alt="be someone" /></a>
+        <a href="{{ request.META.baseContext_linkHome}}"><img src='http://{{request.META.duo_mapHost}}/{{request.META.MEDIA_PRJ}}/images/stp.png' width="375" height="100" alt="solving the problem, someone has to do it" /><img src='http://{{request.META.duo_mapHost}}/{{request.META.MEDIA_PRJ}}/images/water-text-transparent-583x100.png' width="583" height="100" alt="be someone" /></a>
+        <a href="{{ request.META.baseContext_linkHome}}"><img src='http://{{request.META.duo_mapHost}}/{{request.META.MEDIA_PRJ}}/images/stp.png' width="375" height="100" alt="solving the problem, someone has to do it" />{% if request.META.problem_banner %}<img src='http://{{request.META.duo_mapHost}}/{{request.META.MEDIA_PRJ}}/images/{{request.META.problem_banner.file}}' width="375" height="100" alt="{{request.META.problem_banner.alt}}" />{% endif %}     </a>
+        {% endcomment %}
+        {% comment %}
+        <a href="{{ request.META.baseContext_linkHome}}"><img src='http://{{request.META.duo_mapHost}}/{{request.META.MEDIA_PRJ}}/images/stp.png' width="375" height="100" alt="solving the problem, someone has to do it" />{% if request.META.problem_banner %}<img src='{{request.META.problem_banner.file}}' width="583" height="100" alt="{{request.META.problem_banner.alt}}" />{% endif %}     </a>
+        {% endcomment %}
+    </div>
+    
+{% if request.META.baseContext_navigationMenu_LEFTCOL or request.META.baseContext_navigationMenu_RIGHTCOL %}
+    <div class="bes-full-column last bes-navMenu">
+    {% block main_navigation_menu %}        
+        <!-- leftcol navigation block, start -->
+        <div class="span-11 bes-align-left bes-navMenu">
+            {% if request.META.baseContext_navigationMenu_LEFTCOL %}
+                {{ request.META.baseContext_navigationMenu_LEFTCOL|safe }}
+                   {% if request.META.baseContext_navigationMenu_LEFTCOL_LOCAL %}<br/>{% endif %}
+            {% endif %}            
+            {% if request.META.baseContext_navigationMenu_LEFTCOL_LOCAL %}
+                {{ request.META.baseContext_navigationMenu_LEFTCOL_LOCAL|safe }}
+            {% endif %}
+        </div>    
+        <!-- leftcol navigation block, end -->      
+        
+        <!-- rightcol navigation block, start -->
+        <div class="span-8 bes-align-right last">
+            {% if request.META.baseContext_navigationMenu_RIGHTCOL %}
+                {{ request.META.baseContext_navigationMenu_RIGHTCOL|safe }}
+                {% if request.META.baseContext_navigationMenu_RIGHTCOL_LOCAL %}<br/>{% endif %}
+            {% endif %}
+               {% if request.META.baseContext_navigationMenu_RIGHTCOL_LOCAL %}
+                {{ request.META.baseContext_navigationMenu_RIGHTCOL_LOCAL|safe }}
+            {% endif %}            
+        </div>    
+        <!-- rightcol navigation block, end -->  
+    {% endblock main_navigation_menu %}           
+    </div>
+{% endif %}            
+
+    <div class="bes-main-column">             
+        {% if main_1 %}{{ main_1 }}{% endif %}
+        {% if main_1_safe %}{{ main_1_safe|safe }}{% endif %}
+        {% if not main_1 and not main_1_safe %}No results{% endif %}
+        {% if main_2 %}{{ main_2 }}{% endif %}
+        {% if main_3 %}{{ main_3 }}{% endif %}
+    </div> 
+    
+    <div class="bes-side-column bes-align-center last">
+        {% if request.META.a_mgrSidebar_displayList %}
+        {% for sidebarItem in request.META.a_mgrSidebar_displayList %}
+            {{sidebarItem}}
+        {% endfor %}
+        {% endif %}
+    </div> 
+
+    <!-- div, named bob, yes bob  --> 
+    <div class="bes-full-column last">&nbsp;</div>
+    
+    
+    
+    {% if request.META.baseContext_navigationMenu_SIDE %}
+        <div class="bes-full-column last bes-navMenu bes-align-center">
+        {{ request.META.baseContext_navigationMenu_SIDE|safe }}
+           {% if request.META.baseContext_navigationMenu_SIDE_LOCAL %}
+            <br/>{{ request.META.baseContext_navigationMenu_SIDE_LOCAL|safe }}
+        {% endif %}      
+        
+        {% if request.META.devAdmin_citizenAuthorizationsPending %}
+            <br/>{{request.META.devAdmin_citizenAuthorizationsPending|safe}}
+        {% endif %}     
+        
+        </div>
+    {% endif %}
+    
+    {% if request.META.baseContext_navigationMenu_FOOT %}
+    <div class="bes-full-column last bes-navMenu bes-align-center">
+        {{ request.META.baseContext_navigationMenu_FOOT|safe }}
+        {% if request.META.baseContext_navigationMenu_FOOT_LOCAL %}
+            <br/>{{ request.META.baseContext_navigationMenu_FOOT_LOCAL|safe }}
+        {% endif%}    
+    </div>
+    {% endif%}    
+
+    <div class="bes-full-column last">
+        {% include "BASE_copyinfo.html" %}
+    </div>
+</div>
+{% include "BASE_Foot.html" %}
+
+
+
+<!-- Start of Countdown to Copenhagen Widget-->
+<!--
+<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="173" height="90" id="cop15_countdown_mini_white" align="middle">
+    <param name="allowScriptAccess" value="sameDomain" />
+    <param name="allowFullScreen" value="false" />
+    <param name="movie" value="http://unfccc.int/files/inc/graphics/application/x-shockwave-flash/cop15_countdown_mini_white.swf" /><param name="quality" value="high" /><param name="bgcolor" value="#FFFFFF" />    
+    <embed src="http://unfccc.int/files/inc/graphics/application/x-shockwave-flash/cop15_countdown_mini_white.swf" quality="high" bgcolor="#FFFFFF" width="173" height="90" name="cop15_countdown_mini_white" align="middle" allowScriptAccess="sameDomain" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />    
+  </object>
+-->  
+<!-- End of Countdown to Copenhagen Widget-->
+
+<!-- Start of Current CO2 Widget-->
+<!--
+<p><a href="http://co2now.org/"><img src="http://co2now.org/images/stories/widgets/co2_widget_tyndall_200.gif" alt="Current CO2 level in the atmosphere" width="200" height="300" border="0" /></a></p>
+-->  
+<!-- End of Current CO2 Widget-->
+
+<!-- Start of Reddit Widget-->
+{# <script src="http://www.reddit.com/hot/.embed?limit=10&t=all" type="text/javascript"></script> #}
+<!-- End of Reddit Widget-->

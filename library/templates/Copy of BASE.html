@@ -1,0 +1,143 @@
+{% load tagLibrary_extras %}
+{% load compressed %}
+{# This version is not attempting to handle facebook nor print.css nor prj_styles.css nor ie.css #}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head>{% include "BASE_Meta.html" %}<title>{{request.META.bes_title}}</title>
+{% compressed_css 'group_one_css' %}
+{% compressed_js 'all_js' %}
+
+{% block map_header %}
+{# </head><body>&nbsp;  #}
+{{request.META.map_header|safe}}</head><body onload="load()">&nbsp;                    
+{% endblock map_header %}
+                             
+<table><tr><td class="mmh-container-margin">&nbsp;</td><td>
+
+
+<!-- main container div, start -->
+<div class="container mmh-container-background">
+<div class="span-19 last">&nbsp;</div>
+
+<!-- global messages block, start -->
+{% if request.META.a_msgUser_global_message_list %}
+{% for entry in request.META.a_msgUser_global_message_list %}
+<div class="span-19 formError last" align="center">
+{{entry}}
+</div>
+{% endfor %}
+{% endif %}
+<!-- global messages block, end -->
+
+<!-- citizen block, start -->
+<div class="span-19 mmh-navBar mmh-citizenNav last" align="right">
+{% if request.META.baseContext_navigationMenu_CITIZEN %}
+    {{ request.META.baseContext_navigationMenu_CITIZEN|safe }}
+   	{% if request.META.baseContext_navigationMenu_CITIZEN_LOCAL %}
+	    <br/>{{ request.META.baseContext_navigationMenu_CITIZEN_LOCAL|safe }}
+	{% endif %}			
+{% endif %}
+</div>    
+<!-- citizen block, end -->
+
+<!-- banner, start -->
+<div class="mmh-bannerBlock span-19 last" align="center">
+{% block banner %}
+<a href="{{ request.META.baseContext_linkHome}}"><img src='http://{{request.META.duo_mapHost}}/{{request.META.MEDIA_PRJ}}/images/besomeone-logo-958x100.jpg' width="958" height="100" alt="be someone" /></a>
+{% endblock banner %}
+</div>
+<!-- banner, end -->
+
+{% block main_navigation_menu %}
+<div class="mmh-navBar span-19">
+    <!-- leftcol navigation block, start -->
+    <div class="span-11 mmh-leftcolNav" align="left">
+    	{% if request.META.baseContext_navigationMenu_LEFTCOL %}
+    	    {{ request.META.baseContext_navigationMenu_LEFTCOL|safe }}
+	   	    {% if request.META.baseContext_navigationMenu_LEFTCOL_LOCAL %}<br/>{% endif %}
+		{% endif %}			
+	   	{% if request.META.baseContext_navigationMenu_LEFTCOL_LOCAL %}
+		    {{ request.META.baseContext_navigationMenu_LEFTCOL_LOCAL|safe }}
+    	{% endif %}
+    </div>    
+    <!-- leftcol navigation block, end -->  	
+    
+    <!-- rightcol navigation block, start -->
+    <div class="span-8 mmh-rightcolNav last" align="right">
+    	{% if request.META.baseContext_navigationMenu_RIGHTCOL %}
+    	    {{ request.META.baseContext_navigationMenu_RIGHTCOL|safe }}
+	   	    {% if request.META.baseContext_navigationMenu_RIGHTCOL_LOCAL %}<br/>{% endif %}
+    	{% endif %}
+	   	{% if request.META.baseContext_navigationMenu_RIGHTCOL_LOCAL %}
+		    {{ request.META.baseContext_navigationMenu_RIGHTCOL_LOCAL|safe }}
+		{% endif %}			
+    </div>    
+    <!-- rightcol navigation block, end -->   
+</div>    
+{% endblock main_navigation_menu %}
+
+<div class="mmh-navBar span-19">
+
+</div>    
+	
+<!-- main content block, start -->
+<div class="span-19 last">
+
+	<!-- content, start -->   
+    <div class="span-14">
+	    {% if vTitle %}<div class="span-14  mmh-titleBar">{{ vTitle|safe }}</div>{% endif %}
+		{% if main_1 %}{{ main_1 }}{% else %}No Results Returned {% endif %}
+		{% if main_2 %}<br/>{{ main_2 }}{% endif %}
+		{% if main_3 %}<br/>{{ main_3 }}{% endif %}
+    </div> 
+	<!-- content, end -->  
+    
+    <!-- right content, sidebar, start -->
+    <div class="mmh-side-column last">
+	    <!-- A_MGRSIDEBAR -->
+	    {% if request.META.a_mgrSidebar_displayList %}
+		{% for sidebarItem in request.META.a_mgrSidebar_displayList %}
+		{{sidebarItem}}
+		{% endfor %}
+	    {% endif %}
+	    <!-- A_MGRSIDEBAR -->
+    </div>
+    <!-- right content, sidebar, end -->
+
+</div>
+<!-- main content block, end -->
+
+<div class="span-19 last">&nbsp;</div>
+</div>
+<!-- main container div, end -->
+
+</td><td class="mmh-container-margin">&nbsp;</td></tr>
+
+<!-- sub navigation block, start -->
+{% if request.META.baseContext_navigationMenu_FOOT %}
+<tr align="center"><td colspan="3">
+
+<!-- side navigation block, start -->
+<div class="span-19 mmh-sideNav" align="left">
+    {% if request.META.baseContext_navigationMenu_SIDE %}
+        {{ request.META.baseContext_navigationMenu_SIDE|safe }}
+           {% if request.META.baseContext_navigationMenu_SIDE_LOCAL %}
+            <br/>{{ request.META.baseContext_navigationMenu_SIDE_LOCAL|safe }}
+        {% endif %}            
+    {% endif %}
+</div>    
+<!-- side navigation block, end -->  
+    
+<!-- foot navigation block, end -->  
+<div class="mmh-footNav mmh-navBar">
+    {{ request.META.baseContext_navigationMenu_FOOT|safe }}
+    {% if request.META.baseContext_navigationMenu_FOOT_LOCAL %}
+        <br/>{{ request.META.baseContext_navigationMenu_FOOT_LOCAL|safe }}
+    {% endif%}    
+</div>
+<!-- foot navigation block, end -->  
+
+</td></tr>
+{% endif %}
+<!-- sub navigation block, end --> 
+
+<tr><td colspan="3">{% include "BASE_copyinfo.html" %}</td></tr>
+</table>&nbsp;{% include "BASE_Foot.html" %}
